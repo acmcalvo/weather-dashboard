@@ -1,4 +1,8 @@
-var cities = [];
+var City = [];
+
+// Personal API Key 
+const owmAPI = "186883c7b6755041b9bdb837d2956504"
+
 
 var cityFormEl=document.querySelector("#search-city-form");
 var cityInputEl=document.querySelector("#city");
@@ -8,7 +12,7 @@ var forecastTitle = document.querySelector("#forecast");
 var forecastContainerEl = document.querySelector("#fiveday-container");
 var pastSearchButtonEl = document.querySelector("#past-search-buttons");
 
-const owmAPI = "186883c7b6755041b9bdb837d2956504"
+
 
 
 var handleErrors = (response) => {
@@ -25,7 +29,7 @@ var formSumbitHandler = function(event){
     if(city){
         getCityWeather(city);
         get5Day(city);
-        cities.unshift({city});
+        City.unshift({city});
         cityInputEl.value = "";
     } else{
         alert("Please enter a City");
@@ -35,7 +39,7 @@ var formSumbitHandler = function(event){
 }
 
 var saveSearch = function(){
-    localStorage.setItem("cities", JSON.stringify(cities));
+    localStorage.setItem("City", JSON.stringify(City));
 };
 
 var getCityWeather = function(city){
