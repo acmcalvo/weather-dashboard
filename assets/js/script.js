@@ -12,6 +12,8 @@ var citySearchInputEl = document.querySelector("#searched-city");
 var forecastTitle = document.querySelector("#forecast");
 var forecastContainerEl = document.querySelector("#fiveday-container");
 var pastSearchButtonEl = document.querySelector("#past-search-buttons");
+let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
+console.log(searchHistory);
 
 
 
@@ -29,7 +31,7 @@ var formsumitHandler = function(event){
     var city = cityInputEl.value.trim();
     if(city){
         getCityWeather(city);
-        getFiveDayForecast(city);
+        getFiveDayForecast (city);
         City.unshift({city});
         cityInputEl.value = "";
     } else{
@@ -97,12 +99,12 @@ var displayWeather = function(weather, searchCity){
    //append to container
    weatherContainerEl.appendChild(windSpeedEl);
 
-   var lat = weather.coord.lat;
-   var lon = weather.coord.lon;
+   let lat = weather.coord.lat;
+   let lon = weather.coord.lon;
    getUvIndex(lat,lon)
 }
 
-var getUvIndex = function(lat,lon){
+let getUvIndex = function(lat,lon){
   
     var apiURL = `https://api.openweathermap.org/data/2.5/uvi?appid=${owmAPI}&lat=${lat}&lon=${lon}`
     fetch(apiURL)
@@ -140,6 +142,8 @@ var displayUvIndex = function(index){
 // Function to obtain the five day forecast and display to HTML
 var getFiveDayForecast = function(city){
  var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${owmAPI}`
+
+ 
 
     fetch(apiURL)
     .then(function(response){
@@ -181,7 +185,7 @@ var display5Day = function(weather){
        //create temperature span
        var forecastTempEl=document.createElement("span");
        forecastTempEl.classList = "card-body text-center";
-       forecastTempEl.textContent =" Temperature  " + dailyForecast.main.temp +" °F";
+       forecastTempEl.textContent =" Temp:  " + dailyForecast.main.temp +" °F";
 
         //append to forecast card
         forecastEl.appendChild(forecastTempEl);
@@ -189,7 +193,7 @@ var display5Day = function(weather){
           //create Wind Speed---
        var forecastTempEl=document.createElement("span");
        forecastTempEl.classList = "card-body text-center";
-       forecastTempEl.textContent = dailyForecast.main.speed + " MPH";
+       forecastTempEl.textContent = "Wind: " + dailyForecast.wind.speed + " MPH";
 
         //append to forecast card
         forecastEl.appendChild(forecastTempEl);
@@ -197,7 +201,7 @@ var display5Day = function(weather){
 
        var forecastHumEl=document.createElement("span");
        forecastHumEl.classList = "card-body text-center";
-       forecastHumEl.textContent = "Humidity " + dailyForecast.main.humidity + "  %";
+       forecastHumEl.textContent = "Humidity: " + dailyForecast.main.humidity + "  %";
 
        //append to forecast card
        forecastEl.appendChild(forecastHumEl);
