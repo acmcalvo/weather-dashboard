@@ -13,13 +13,7 @@ var forecastTitle = document.querySelector("#forecast");
 var forecastContainerEl = document.querySelector("#fiveday-container");
 var pastSearchButtonEl = document.querySelector("#past-search-buttons");
 
-// Error handler for fetch, 
-var handleErrors = (response) => {
-    if (!response.ok) {
-        throw Error(response.statusText);
-    }
-    return response;
-}
+
 
 
 var formsumitHandler = function(event){
@@ -111,6 +105,14 @@ let getUvIndex = function(lat,lon){
         });
     });
     
+}
+
+// Error handler for fetch, 
+var handleErrors = (response) => {
+    if (!response.ok) {
+        throw Error(response.statusText);
+    }
+    return response;
 }
  
 var displayUvIndex = function(index){
