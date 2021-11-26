@@ -1,3 +1,4 @@
+// Set global variables, including Open Weather Maps API Key
 var City = [];
 
 // Personal API Key 
@@ -23,12 +24,12 @@ var handleErrors = (response) => {
 }
 
 
-var formSumbitHandler = function(event){
+var formsumitHandler = function(event){
     event.preventDefault();
     var city = cityInputEl.value.trim();
     if(city){
         getCityWeather(city);
-        get5Day(city);
+        getFiveDayForecast(city);
         City.unshift({city});
         cityInputEl.value = "";
     } else{
@@ -136,8 +137,8 @@ var displayUvIndex = function(index){
     //append index to current weather
     weatherContainerEl.appendChild(uvIndexEl);
 }
-
-var get5Day = function(city){
+// Function to obtain the five day forecast and display to HTML
+var getFiveDayForecast = function(city){
  var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${owmAPI}`
 
     fetch(apiURL)
@@ -180,14 +181,23 @@ var display5Day = function(weather){
        //create temperature span
        var forecastTempEl=document.createElement("span");
        forecastTempEl.classList = "card-body text-center";
-       forecastTempEl.textContent = dailyForecast.main.temp + " °F";
+       forecastTempEl.textContent =" Temperature  " + dailyForecast.main.temp +" °F";
 
         //append to forecast card
         forecastEl.appendChild(forecastTempEl);
 
+          //create Wind Speed---
+       var forecastTempEl=document.createElement("span");
+       forecastTempEl.classList = "card-body text-center";
+       forecastTempEl.textContent = dailyForecast.main.speed + " MPH";
+
+        //append to forecast card
+        forecastEl.appendChild(forecastTempEl);
+
+
        var forecastHumEl=document.createElement("span");
        forecastHumEl.classList = "card-body text-center";
-       forecastHumEl.textContent = dailyForecast.main.humidity + "  %";
+       forecastHumEl.textContent = "Humidity " + dailyForecast.main.humidity + "  %";
 
        //append to forecast card
        forecastEl.appendChild(forecastHumEl);
@@ -223,5 +233,5 @@ var pastSearchHandler = function(event){
 
 // pastSearch();
 
-cityFormEl.addEventListener("submit", formSumbitHandler);
+cityFormEl.addEventListener("submit", formsumitHandler);
 pastSearchButtonEl.addEventListener("click", pastSearchHandler);
