@@ -2,7 +2,7 @@
 var City = [];
 
 // Personal API Key 
-const owmAPI = "186883c7b6755041b9bdb837d2956504"
+const APIKey = "186883c7b6755041b9bdb837d2956504"
 
 
 var cityFormEl=document.querySelector("#search-city-form");
@@ -44,7 +44,7 @@ var saveSearch = function(){
 var getCityWeather = function(city){
     
   
-   var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city},&units=imperial&appid=${owmAPI}`
+   var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city},&units=imperial&appid=${APIKey}`
 
     fetch(apiURL)
     .then(function(response){
@@ -102,7 +102,7 @@ var displayWeather = function(weather, searchCity){
 
 let getUvIndex = function(lat,lon){
   
-    var apiURL = `https://api.openweathermap.org/data/2.5/uvi?appid=${owmAPI}&lat=${lat}&lon=${lon}`
+    var apiURL = `https://api.openweathermap.org/data/2.5/uvi?appid=${APIKey}&lat=${lat}&lon=${lon}`
     fetch(apiURL)
     .then(function(response){
         response.json().then(function(data){
@@ -137,7 +137,7 @@ var displayUvIndex = function(index){
 }
 // Function to obtain the five day forecast and display to HTML
 var getFiveDayForecast = function(city){
- var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${owmAPI}`
+ var apiURL = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=imperial&appid=${APIKey}`
 
  
 
