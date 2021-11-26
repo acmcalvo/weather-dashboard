@@ -17,7 +17,7 @@ console.log(searchHistory);
 
 
 
-
+// Error handler for fetch, 
 var handleErrors = (response) => {
     if (!response.ok) {
         throw Error(response.statusText);
@@ -231,7 +231,7 @@ var pastSearchHandler = function(event){
     var city = event.target.getAttribute("data-city")
     if(city){
         getCityWeather(city);
-        get5Day(city);
+        display5Day(city);
     }
 }
 
