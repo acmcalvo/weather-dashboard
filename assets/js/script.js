@@ -12,10 +12,6 @@ var citySearchInputEl = document.querySelector("#searched-city");
 var forecastTitle = document.querySelector("#forecast");
 var forecastContainerEl = document.querySelector("#fiveday-container");
 var pastSearchButtonEl = document.querySelector("#past-search-buttons");
-let searchHistory = JSON.parse(localStorage.getItem("search")) || [];
-console.log(searchHistory);
-
-
 
 // Error handler for fetch, 
 var handleErrors = (response) => {
