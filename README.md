@@ -10,7 +10,7 @@ retrieving information for OpenWeather One Call Api
     I create APKey to have access to the information
     Create basic variables.
     
-    <img width="636" alt="Screen Shot 2021-11-28 at 11 38 57 AM" src="https://user-images.githubusercontent.com/91921941/143777382-eab4404e-86e4-48db-92fd-0196a3e57d14.png">
+ <img width="636" alt="Screen Shot 2021-11-28 at 11 38 57 AM" src="https://user-images.githubusercontent.com/91921941/143777382-eab4404e-86e4-48db-92fd-0196a3e57d14.png">
 
     
     
