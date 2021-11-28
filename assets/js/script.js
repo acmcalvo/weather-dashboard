@@ -23,7 +23,7 @@ var handleErrors = (response) => {
     return response;
 }
 
-
+// get  Input city from 
 var formSumbitHandler = function(event){
     event.preventDefault();
     var city = cityInputEl.value.trim();
@@ -38,11 +38,12 @@ var formSumbitHandler = function(event){
     saveSearch();
     pastSearch(city);
 }
-
+// LocalStorage of my the city
 var saveSearch = function(){
     localStorage.setItem("citysearch", JSON.stringify(citysearch));
-};
+}
 
+// Ask API for city Weather
 var getCityWeather = function(city){
     var apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=imperial&appid=${APIkey}`
 
@@ -161,42 +162,35 @@ var display5Day = function(weather){
        var forecastEl=document.createElement("div");
        forecastEl.classList = "card bg-primary text-light m-2";
 
-     
-
-       //create date, image temperature, forecast and appends
+        //create date, image temperature, forecast and appends
        var forecastDate = document.createElement("h5")
        forecastDate.textContent= moment.unix(dailyForecast.dt).format("DD/MM/yyyy");
        forecastDate.classList = "card-header text-center"
-       forecastEl.appendChild(forecastDate);
+        forecastEl.appendChild(forecastDate);
 
        
        
        var weatherIcon = document.createElement("img")
        weatherIcon.classList = "card-body text-center";
        weatherIcon.setAttribute("src", `https://openweathermap.org/img/wn/${dailyForecast.weather[0].icon}@2x.png`);  
-       forecastEl.appendChild(weatherIcon);
+        forecastEl.appendChild(weatherIcon);
        
       
        var forecastTempEl=document.createElement("span");
        forecastTempEl.classList = "card-body text-center";
        forecastTempEl.textContent = " Temp: " + dailyForecast.main.temp + " °F";
-       forecastEl.appendChild(forecastTempEl);
+        forecastEl.appendChild(forecastTempEl);
 
        var forecastWindEl=document.createElement("span");
        forecastWindEl.classList = "card-body text-center";
        forecastWindEl.textContent = " Wind: " + dailyForecast.wind.speed  + " MPH";
-       forecastEl.appendChild(forecastWindEl);
+        forecastEl.appendChild(forecastWindEl);
        
-
-       
-      
 
        var forecastHumEl=document.createElement("span");
        forecastHumEl.classList = "card-body text-center";
        forecastHumEl.textContent = "Humidity: " + dailyForecast.main.humidity + "  %";
-
-       
-       forecastEl.appendChild(forecastHumEl);
+         forecastEl.appendChild(forecastHumEl);
 
         forecastContainerEl.appendChild(forecastEl);
     }
