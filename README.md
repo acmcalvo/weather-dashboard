@@ -20,5 +20,5 @@ retrieving information for OpenWeather One Call Api
 
 <img width="877" alt="Screen Shot 2021-11-28 at 11 40 53 AM" src="https://user-images.githubusercontent.com/91921941/143777481-9797ca54-534e-4152-9428-a9d7055d2e0f.png">
 
-4. 
+4. Clompleted all the call for  Temp, Wind, Humidity and UV
 
