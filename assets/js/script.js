@@ -164,7 +164,7 @@ var display5Day = function(weather){
 
         //create date, image temperature, forecast and appends
        var forecastDate = document.createElement("h5")
-       forecastDate.textContent= moment.unix(dailyForecast.dt).format("DD/MM/yyyy");
+       forecastDate.textContent= moment.unix(dailyForecast.dt).format("MM/DD/yyyy");
        forecastDate.classList = "card-header text-center"
         forecastEl.appendChild(forecastDate);
 
